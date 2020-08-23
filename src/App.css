@@ -1,3 +1,16 @@
+*{
+    padding: 0;
+    margin: 0;
+  }
+  
+.navbar-collapse{
+    background: #246EF0;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+
+}
+
 .ul {
     margin:0;
     padding:0;
@@ -7,7 +20,18 @@
     display:block;
     float:left;
     padding:0 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
     }
+.ul .li-left a{
+    display: block;
+    padding: 20px;
+    color: #fff;
+    text-decoration: none;
+}
+.ul li:hover {
+    background: #4C2DE3;
+  }
 
 .ul-right {
     margin:0;
@@ -15,6 +39,17 @@
     }
 .ul-right .li-right{
     display:block;
-    float: right;;
+    float:right;
     padding:0 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
     }
+.ul-right .li-right a{
+    display: block;
+    padding: 20px;
+    color: #fff;
+    text-decoration: none;
+}
+.ul-right li:hover {
+    background: #4C2DE3;
+  }
