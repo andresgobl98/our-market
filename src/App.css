@@ -30,6 +30,7 @@
     text-decoration: none;
 }
 .ul li:hover {
+    transition:all .5s ease-in-out;
     background: #ea5455;
   }
 
@@ -51,6 +52,7 @@
     text-decoration: none;
 }
 .ul-right li:hover {
+    transition:all .5s ease-in-out;
     background: #ea5455;
   }
 
