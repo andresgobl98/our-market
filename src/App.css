@@ -4,7 +4,7 @@
   }
   
 .navbar-collapse{
-    background: #246EF0;
+    background: #2d4059;
     width: 100%;
     position: fixed;
     z-index: 100;
@@ -30,7 +30,7 @@
     text-decoration: none;
 }
 .ul li:hover {
-    background: #4C2DE3;
+    background: #ea5455;
   }
 
 .ul-right {
@@ -51,5 +51,17 @@
     text-decoration: none;
 }
 .ul-right li:hover {
-    background: #4C2DE3;
+    background: #ea5455;
   }
+
+
+
+  /* ----------------- COLORS -----------------
+  2d4059
+
+  ea5455
+
+  decdc3
+
+  e5e5e5
+  */
