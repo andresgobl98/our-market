@@ -1,11 +1,8 @@
-import React from 'react'
-import './styles/App.css';
-import Post from './Post.js'
-import Slider from './Slider.js'
+import React from 'react';
+import './Navbar.css'
 
-function App() {
-    return (
-        <>
+function Navbar(){
+    return(
         <div className="navbar-collapse">
             <ul className="ul">
                 <li className="li-left"><a href="#">HOME</a></li>
@@ -15,15 +12,7 @@ function App() {
                 <li className="li-right"><a href="https://www.youtube.com/watch?v=WUl9NPPMx8s">SALIR</a></li>
             </ul>
 	    </div>
-        <Slider />
-        <div className="dashboard">
-            <Post />
-            <Post />
-            <Post />
-            <Post />
-        </div>
-        </>
     );
 }
 
-export default App;
+export default Navbar;
