@@ -1,8 +1,11 @@
 import React from 'react'
-import './App.css';
+import './styles/App.css';
+import Post from './Post.js'
+import Slider from './Slider.js'
 
 function App() {
     return (
+        <>
         <div className="navbar-collapse">
             <ul className="ul">
                 <li className="li-left"><a href="#">HOME</a></li>
@@ -12,7 +15,15 @@ function App() {
                 <li className="li-right"><a href="#">SALIR</a></li>
             </ul>
 	    </div>
+        <Slider />
+        <div className="dashboard">
+            <Post />
+            <Post />
+            <Post />
+            <Post />
+        </div>
+        </>
     );
 }
 
-export default App
+export default App;

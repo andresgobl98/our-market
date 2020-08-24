@@ -1,0 +1,35 @@
+.post {
+    margin: auto;
+    padding: 0;
+    height: 350px;
+    width: 300px;
+    border-radius: 10px;
+    background-color: #2d4059;
+    color: #fff;
+}
+
+.imgCont {
+    margin: 0;
+    padding: 0;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    height: 190px;
+    background-color: #ea5455;
+    /*Esta parte es solo mientras hay texto*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    color: #2d4059;
+}
+
+.description {
+    margin: 0;
+    padding-top: 5px;
+    padding-left: 20px;
+}
+
+.description > p {
+    margin: 0;
+    padding: 0;
+}
