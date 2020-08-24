@@ -12,7 +12,7 @@ function App() {
                 <li className="li-left"><a href="#">SOPORTE</a></li>
             </ul>
             <ul className="ul-right">
-                <li className="li-right"><a href="#">SALIR</a></li>
+                <li className="li-right"><a href="https://www.youtube.com/watch?v=WUl9NPPMx8s">SALIR</a></li>
             </ul>
 	    </div>
         <Slider />

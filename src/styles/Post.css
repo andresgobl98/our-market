@@ -14,7 +14,8 @@
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     height: 190px;
-    background-color: #ea5455;
+    background: url(https://x6i2p6h3.rocketcdn.me/wp-content/uploads/2018/08/selling-3213725_960_720.jpg);
+    background-size: 100% 100%;
     /*Esta parte es solo mientras hay texto*/
     display: flex;
     justify-content: center;
