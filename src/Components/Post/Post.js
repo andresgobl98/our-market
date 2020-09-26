@@ -8,7 +8,7 @@ export default function Post(props) {
     return (
         <Col sm="6" md="4" lg="3">
             <Card>
-                <Card.Img variant="top" src={require('../Images/' + props.bImage)} />
+                <Card.Img variant="top" src={require('../../Images/' + props.bImage)} />
                 <Card.Body>
                     <Card.Title>{props.bName}</Card.Title>
                     <Card.Text>

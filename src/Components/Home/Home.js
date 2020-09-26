@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Highlights from './Highlights';
-import Dashboard from './Dashboard';
+import Highlights from '../Highlights/Highlights';
+import Dashboard from '../Dashboard/Dashboard';
 
 export default class Home extends Component {
     render() {

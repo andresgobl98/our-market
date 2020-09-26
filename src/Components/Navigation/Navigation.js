@@ -1,7 +1,7 @@
 import React from 'react';
 import { Nav } from 'react-bootstrap';
 import Navbar from 'react-bootstrap/Navbar';
-import Home from './Home';
+import Home from '../Home/Home';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
@@ -12,7 +12,7 @@ import {
     Link
 } from "react-router-dom";
 
-export default function Barnav() {
+export default function Navigation() {
     return (
         <>
             <Navbar bg="dark" expand="md">
