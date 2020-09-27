@@ -10,13 +10,13 @@ export default class Dashboard extends Component {
         super()
 
         this.state = {
-            posts: [{name: "lkasdjf", descr: "kjafgañskf", img: "old-lady.jpg"},
-            {name: "lkasdjf", descr: "kjafgañskf", img: "old-lady.jpg"},
-            {name: "lkasdjf", descr: "kjafgañskf", img: "old-lady.jpg"},
-            {name: "lkasdjf", descr: "kjafgañskf", img: "old-lady.jpg"},
-            {name: "lkasdjf", descr: "kjafgañskf", img: "old-lady.jpg"},
-            {name: "lkasdjf", descr: "kjafgañskf", img: "old-lady.jpg"},
-            {name: "lkasdjf", descr: "kjafgañskf", img: "old-lady.jpg"}]
+            posts: [{ name: "Business 0", descr: "Description", img: "old-lady.jpg" },
+            { name: "Business 1", descr: "Description ", img: "old-lady.jpg" },
+            { name: "Business 2", descr: "Description", img: "old-lady.jpg" },
+            { name: "Business 3", descr: "Description", img: "old-lady.jpg" },
+            { name: "Business 4", descr: "Description", img: "old-lady.jpg" },
+            { name: "Business 5", descr: "Description", img: "old-lady.jpg" },
+            { name: "Business 6", descr: "Description", img: "old-lady.jpg" }]
         }
     }
 
