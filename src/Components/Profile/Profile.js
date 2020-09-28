@@ -13,11 +13,13 @@ import './Profile.css';
 
 const now = 60;
 export default class Profile extends Component {
+
+
   render() {
+    console.log(this.props.user)
     return (
 
       <Container>
-
         <Jumbotron fluid>
           <Container>
             <h1 className="Titulo">Mi perfil</h1>
