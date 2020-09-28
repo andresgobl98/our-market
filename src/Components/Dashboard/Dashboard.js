@@ -9,7 +9,7 @@ export default class Dashboard extends Component {
 
     render() {
         const posts = this.props.posts.map(post => {
-            return <Post key={post.id} bName={post.name} bDescr={post.sDescr} bImage={post.img} />
+            return <Post key={post.id} bName={post.name} bDescr={post.sDescr} bImage={post.img} rating={post.rating} />
         })
 
         return (

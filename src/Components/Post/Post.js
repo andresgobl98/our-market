@@ -13,8 +13,6 @@ import {
     Link
 } from "react-router-dom";
 
-const now = 60;
-
 export default function Post(props) {
     return (
         <Col sm="6" md="4" lg="3">
@@ -26,7 +24,7 @@ export default function Post(props) {
                         {props.bDescr}
                     </Card.Text>
                     <span className="rating">Rating</span>
-                    <ProgressBar now={now} label={`${now}%`} />
+                    <ProgressBar now={props.rating} label={`${props.rating}%`} />
                     <br></br>
                     <Dropdown as={ButtonGroup}>
                         <Link to={props.bName.replace(/ /g,"-")}>
