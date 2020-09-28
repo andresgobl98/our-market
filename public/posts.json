@@ -1,0 +1,66 @@
+[
+    {
+        "id": 1,
+        "name": "Empresa 1",
+        "highlighted": true,
+        "sDescr": "Short Description",
+        "lDescr": "Long Description",
+        "img": "computador.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Empresa 2",
+        "highlighted": false,
+        "sDescr": "Short Description",
+        "lDescr": "Long Description",
+        "img": "edificio.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Empresa 3",
+        "highlighted": true,
+        "sDescr": "Short Description",
+        "lDescr": "Long Description",
+        "img": "old-lady.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Empresa 4",
+        "highlighted": true,
+        "sDescr": "Short Description",
+        "lDescr": "Long Description",
+        "img": "reloj.jpg"
+    },
+    {
+        "id": 5,
+        "name": "Empresa 5",
+        "highlighted": false,
+        "sDescr": "Short Description",
+        "lDescr": "Long Description",
+        "img": "money.jpg"
+    },
+    {
+        "id": 6,
+        "name": "Empresa 6",
+        "highlighted": false,
+        "sDescr": "Short Description",
+        "lDescr": "Long Description",
+        "img": "old-lady.jpg"
+    },
+    {
+        "id": 7,
+        "name": "Empresa 7",
+        "highlighted": false,
+        "sDescr": "Short Description",
+        "lDescr": "Long Description",
+        "img": "reloj.jpg"
+    },
+    {
+        "id": 8,
+        "name": "Empresa 8",
+        "highlighted": false,
+        "sDescr": "Short Description",
+        "lDescr": "Long Description",
+        "img": "computador.jpg"
+    }
+]
