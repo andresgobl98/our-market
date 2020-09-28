@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-<<<<<<< HEAD
-=======
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -8,16 +6,10 @@ import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 
 const now = 60;
->>>>>>> origin/robert
 
 export default class Business extends Component {
     render() {
         return (
-<<<<<<< HEAD
-            <div>
-                
-            </div>
-=======
             <Container >
                 <Row>
                     <img className="imagenBusiness" src={require('../../Images/computador.jpg')} width={1160}
@@ -44,7 +36,6 @@ export default class Business extends Component {
                     </Col>
                 </Row>
             </Container>
->>>>>>> origin/robert
         )
     }
 }
