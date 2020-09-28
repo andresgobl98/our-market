@@ -1,0 +1,15 @@
+
+.Titulo{
+  color: #343a40;
+  text-align: center;
+}
+
+ul{
+  list-style:none;
+  line-height : 40px;
+}
+
+.Lista{
+  font-weight: bold;
+}
+
