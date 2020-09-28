@@ -1,11 +1,12 @@
 import React from 'react';
-import Highlights from '../Highlights/Highlights';
+import Footer from '../Footer/Footer';
 import Navigation from '../Navigation/Navigation';
 
 function App() {
   return (
     <div className="App">
       <Navigation />
+      <Footer />
     </div>
   );
 }

@@ -25,8 +25,8 @@ export default function Navigation() {
                         <Nav.Link as={Link} to="/orders">Mis Pedidos</Nav.Link>
                     </Nav>
                     <Form inline>
-                        <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                        <Button variant="outline-success">Search</Button>
+                        <FormControl type="text" placeholder="Empresa, producto, etc." className="mr-sm-2" />
+                        <Button variant="outline-success">Buscar</Button>
                     </Form>
                 </Navbar.Collapse>
 
