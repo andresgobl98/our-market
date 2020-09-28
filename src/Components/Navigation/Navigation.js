@@ -1,10 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Nav } from 'react-bootstrap';
 import axios from 'axios';
 import Navbar from 'react-bootstrap/Navbar';
 import Home from '../Home/Home';
 import Profile from '../Profile/Profile';
 import Business from '../Business/Business';
+import Login from '../Login/Login';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
@@ -22,14 +23,16 @@ export default class Navigation extends Component {
 
         this.state = {
             posts: [],
-            session: {}
+            session: {},
+            isLogged: false,
+            showLogin: false
         }
     }
 
-    componentDidMount () {
-        axios.get('./posts.json') 
+    componentDidMount() {
+        axios.get('./posts.json')
             .then(response => {
-                const posts = response.data.slice(0,10);
+                const posts = response.data.slice(0, 10);
 
                 const updatedPosts = posts.map(post => {
                     return {
@@ -42,40 +45,67 @@ export default class Navigation extends Component {
                     }
                 });
 
-                this.setState({posts: updatedPosts})
+                this.setState({ posts: updatedPosts })
             });
-        axios.get('./user.json') 
+    }
+
+    showModal = () => {
+        if (this.state.showLogin) {
+            this.setState({ showLogin: false })
+        } else {
+            this.setState({ showLogin: true })
+        }
+    }
+
+    login = (email, password) => {
+        axios.get('./user.json')
             .then(response => {
                 const session = response.data;
                 console.log(session)
-                this.setState({session: session})
+                if (email === session.email && password === session.password) {
+                    this.setState({session: session, isLogged: true})
+                } else {
+                    alert("El correo o la contraseña no coinciden.")
+                }
             });
     }
 
     render() {
         const routes = this.state.posts.map(bsn => {
             return (
-                <Route path={'/' + bsn.name.replace(/ /g,"-")}>
+                <Route path={'/' + bsn.name.replace(/ /g, "-")}>
                     <Business data={bsn} />
                 </Route>
             )
         })
+
+        const logLinks = () => {
+            if (this.state.isLogged) {
+                return (
+                    <Navbar.Collapse>
+                        <Nav className="ml-auto">
+                            <Nav.Link as={Link} to="/profile">Mi Perfil</Nav.Link>
+                            <Nav.Link as={Link} to="/orders">Mis Pedidos</Nav.Link>
+                        </Nav>
+                    </Navbar.Collapse>
+                )
+            } else {
+                return
+            }
+        }
+
 
         return (
             <>
                 <Navbar bg="dark" variant="dark" expand="md">
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Brand as={Link} to="/">Our Market</Navbar.Brand>
-                    <Navbar.Collapse>
-                        <Nav className="mr-auto">
-                            <Nav.Link as={Link} to="/profile">Mi Perfil</Nav.Link>
-                            <Nav.Link as={Link} to="/orders">Mis Pedidos</Nav.Link>
-                        </Nav>
-                        <Form inline>
-                            <FormControl type="text" placeholder="Empresa, producto, etc." className="mr-sm-2" />
-                            <Button variant="outline-success">Buscar</Button>
-                        </Form>
-                    </Navbar.Collapse>
+                    <Form inline>
+                        <FormControl type="text" placeholder="Empresa, producto, etc." className="mr-sm-2" />
+                        <Button variant="outline-success">Buscar</Button>
+                    </Form>
+                    {logLinks()}
+                    <Button className="mr-20" variant="outline-warning" onClick={this.showModal}>Iniciar Sesión</Button>
                 </Navbar>
                 <Switch>
                     <Route exact path='/'>
@@ -86,6 +116,7 @@ export default class Navigation extends Component {
                     </Route>
                     {routes}
                 </Switch>
+                <Login show={this.state.showLogin} changeShow = {this.showModal} login={this.login} />
             </>
         )
     }
