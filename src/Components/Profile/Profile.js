@@ -4,13 +4,28 @@ import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import Image from 'react-bootstrap/Image'
 import Jumbotron from 'react-bootstrap/Jumbotron'
-import axios from 'axios';
+import Post from '../Post/Post'
 import './Profile.css';
 
-const now = 60;
 export default class Profile extends Component {
 
+constructor(){
+  super()
+}
+  
+
   render() {
+      console.log(this.props.todos)
+      console.log(this.props.user.favourites)
+    
+      let filtro = this.props.todos.filter(post=> this.props.user.favourites.includes(Number(post.id)))
+      console.log(filtro)
+      let nuevo=filtro.map(post => {
+     return(<Post key={post.id} bName={post.name}  bDescr={post.sDescr}  bImage={post.img}  rating={post.rating} /> )
+      })
+
+  
+
     return (
 
       <Container>
@@ -32,18 +47,18 @@ export default class Profile extends Component {
             <ul className= "Lista">
               <li>Nombre:</li>
               <li>Apellido:</li>
-              <li>Telefono:</li>
+              <li>Edad:</li>
               <li>Direccion:</li>
               <li>email:</li>
             </ul>
           </Col>
           <Col sm="50" md="80" lg="90">
           <ul>
-              <li>Usuario</li>
-              <li>De prueba</li>
-              <li>00000000</li>
-              <li>Casa lejana</li>
-              <li>usuario@deprueba.com</li>
+              <li>{this.props.user.firstName}</li>
+              <li>{this.props.user.lastName}</li>
+              <li>{this.props.user.age}</li>
+              <li>{this.props.user.address}</li>
+              <li>{this.props.user.email}</li>
             </ul>
           </Col>
         </Row>
@@ -53,6 +68,11 @@ export default class Profile extends Component {
             <h1 className="Titulo">Mis negocios favoritos</h1>
           </Container>
         </Jumbotron>
+        <Container>
+                    <Row className="justify-content-center">
+                        {nuevo}
+                    </Row>
+                </Container>
       </Container>
     )
   }
