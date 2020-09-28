@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styles from './Navigation.module.css';
 import { Nav } from 'react-bootstrap';
 import axios from 'axios';
 import Navbar from 'react-bootstrap/Navbar';
@@ -64,7 +65,7 @@ export default class Navigation extends Component {
                 const session = response.data;
                 console.log(session)
                 if (email === session.email && password === session.password) {
-                    this.setState({session: session, isLogged: true})
+                    this.setState({ session: session, isLogged: true })
                 } else {
                     alert("El correo o la contraseña no coinciden.")
                 }
@@ -84,14 +85,25 @@ export default class Navigation extends Component {
             if (this.state.isLogged) {
                 return (
                     <Navbar.Collapse>
-                        <Nav className="ml-auto">
+                        <Nav className="mr-auto">
                             <Nav.Link as={Link} to="/profile">Mi Perfil</Nav.Link>
                             <Nav.Link as={Link} to="/orders">Mis Pedidos</Nav.Link>
                         </Nav>
+                        <Form inline className={styles.form}>
+                            <FormControl type="text" placeholder="Empresa, producto, etc." className="mr-sm-2" />
+                            <Button variant="outline-success">Buscar</Button>
+                        </Form>
                     </Navbar.Collapse>
                 )
             } else {
-                return
+                return (
+                    <Navbar.Collapse>
+                        <Form inline className={styles.form}>
+                            <FormControl type="text" placeholder="Empresa, producto, etc." className="mr-sm-2" />
+                            <Button variant="outline-success">Buscar</Button>
+                        </Form>
+                    </Navbar.Collapse>
+                )
             }
         }
 
@@ -101,12 +113,8 @@ export default class Navigation extends Component {
                 <Navbar bg="dark" variant="dark" expand="md">
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Brand as={Link} to="/">Our Market</Navbar.Brand>
-                    <Form inline>
-                        <FormControl type="text" placeholder="Empresa, producto, etc." className="mr-sm-2" />
-                        <Button variant="outline-success">Buscar</Button>
-                    </Form>
                     {logLinks()}
-                    <Button className="mr-20" variant="outline-warning" onClick={this.showModal}>Iniciar Sesión</Button>
+                    <Button className={`${styles.loginButton} mr-20`} variant="outline-warning" onClick={this.showModal}>Iniciar Sesión</Button>
                 </Navbar>
                 <Switch>
                     <Route exact path='/'>
@@ -117,7 +125,7 @@ export default class Navigation extends Component {
                     </Route>
                     {routes}
                 </Switch>
-                <Login show={this.state.showLogin} changeShow = {this.showModal} login={this.login} />
+                <Login show={this.state.showLogin} changeShow={this.showModal} login={this.login} />
             </>
         )
     }
