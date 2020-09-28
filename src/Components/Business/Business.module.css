@@ -1,0 +1,65 @@
+.imagenBusiness{
+
+}
+
+.bName{
+    margin-top: 2%;
+    font-weight: 1000;
+    font-size: 40px;
+    text-transform: uppercase;
+    color: #007bff;
+    text-align: center;
+}
+.bDescrTitle{
+    margin-top: 0;
+    margin-left: 1%;
+    font-weight: 1000;
+    font-size: 30px;
+    text-transform: inherit;
+    color: #007bff;
+    text-align: center;
+}
+.bDescr{
+    margin: 0 auto;
+    margin-left: 1%;
+    font-weight: 100;
+    font-size: 17px;
+    text-transform: inherit;
+    color: black;
+}
+.bRating{
+    margin-top: 0;
+    margin-left: 1%;
+    font-weight: 1000;
+    font-size: 30px;
+    text-transform: inherit;
+    color: #007bff;
+    text-align: center;
+}
+
+
+.bForm .bLi:before{
+    content: "";
+    position: absolute;
+    top: 14px;
+    left: -44px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    border: 2px solid #007bff;
+    background-color: #fff;
+}
+
+.bForm .bLi:after{
+    content: "";
+    position: absolute;
+    top: 23px;
+    left: -40px;
+    width: 3px;
+    height: 95px;
+    background: #007bff;
+}
+
+.bForm .bLi{
+    position: relative;
+}

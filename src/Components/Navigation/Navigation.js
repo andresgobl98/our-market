@@ -41,7 +41,8 @@ export default class Navigation extends Component {
                         highlighted: post.highlighted,
                         sDescr: post.sDescr,
                         lDescr: post.lDescr,
-                        img: post.img
+                        img: post.img,
+                        rating: post.rating
                     }
                 });
 
