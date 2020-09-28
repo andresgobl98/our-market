@@ -21,7 +21,8 @@ export default class Navigation extends Component {
         super()
 
         this.state = {
-            posts: []
+            posts: [],
+            session: {}
         }
     }
 
@@ -42,7 +43,13 @@ export default class Navigation extends Component {
                 });
 
                 this.setState({posts: updatedPosts})
-            }); 
+            });
+        axios.get('./user.json') 
+            .then(response => {
+                const session = response.data;
+                console.log(session)
+                this.setState({session: session})
+            });
     }
 
     render() {
@@ -75,7 +82,7 @@ export default class Navigation extends Component {
                         <Home posts={this.state.posts} />
                     </Route>
                     <Route path='/profile'>
-                        <Profile />
+                        <Profile user={this.state.session} />
                     </Route>
                     {routes}
                 </Switch>

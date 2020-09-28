@@ -1,0 +1,10 @@
+{
+    "username": "username123",
+    "password": "123457",
+    "firstName": "Pepito",
+    "lastName": "Pérez",
+    "age": "23",
+    "address": "Fake street with 5th",
+    "email": "thisisafake@fakey.com",
+    "favourites": [1, 2, 3]
+}
