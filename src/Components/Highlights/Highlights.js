@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Highlights.css';
+import styles from './Highlights.module.css';
 import Carousel from 'react-bootstrap/Carousel';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -10,7 +10,7 @@ export default class Highlights extends Component {
         const items = this.props.highlights.map(item => {
             return (
                 <Carousel.Item>
-                    <img className="itemImg d-block w-100" src={require("../../Images/" + item.img)} />
+                    <img className={`${styles.itemImg} d-block w-100`} src={require("../../Images/" + item.img)} />
                     <Carousel.Caption>
                         <h3>{item.name}</h3>
                         <p>{item.sDescr}</p>
