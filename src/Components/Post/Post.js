@@ -6,6 +6,12 @@ import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
 import ProgressBar from 'react-bootstrap/ProgressBar';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
 
 const now = 60;
 
@@ -23,7 +29,9 @@ export default function Post(props) {
                     <ProgressBar now={now} label={`${now}%`} />
                     <br></br>
                     <Dropdown as={ButtonGroup}>
-                        <Button variant="success">Ver Negocio</Button>
+                        <Link to={props.bName.replace(/ /g,"-")}>
+                            <Button variant="success">Ver Negocio</Button>
+                        </Link>
 
                         <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />
 
