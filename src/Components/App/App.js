@@ -1,15 +1,31 @@
-import React from 'react'
-import Footer from '../Footer/Footer';
-import Navigation from '../Navigation/Navigation';
+import React, { Component } from "react";
+import Footer from "../Footer/Footer";
+import Navigation from "../Navigation/Navigation";
+import { BrowserRouter as Router } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="app">
-      <Navigation />
-      <Footer />
-    </div>
-  );
+import { connect } from "react-redux";
+import * as actionCreators from "../../store/actions/";
+
+class App extends Component {
+  componentDidMount = () => {
+    this.props.onPersistAuthentication();
+  };
+
+  render = () => {
+    return (
+      <Router>
+        <Navigation />
+        <Footer />
+      </Router>
+    );
+  };
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onPersistAuthentication: () =>
+      dispatch(actionCreators.persistAuthentication()),
+  };
+};
 
-export default App;
+export default connect(null, mapDispatchToProps)(App);
