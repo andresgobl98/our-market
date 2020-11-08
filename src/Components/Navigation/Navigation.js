@@ -4,6 +4,7 @@ import { Nav } from 'react-bootstrap';
 import axios from 'axios';
 import Navbar from 'react-bootstrap/Navbar';
 import Home from '../Home/Home';
+import NoMatch from '../NoMatch/NoMatch';
 import Profile from '../Profile/Profile';
 import Business from '../Business/Business';
 import Login from '../Login/Login';
@@ -24,7 +25,7 @@ export default class Navigation extends Component {
 
         this.state = {
             posts: [],
-            session: {favourites:[]},
+            session: { favourites: [] },
             isLogged: false,
             showLogin: false,
         }
@@ -121,9 +122,12 @@ export default class Navigation extends Component {
                         <Home posts={this.state.posts} />
                     </Route>
                     <Route path='/profile'>
-                        <Profile user={this.state.session} todos ={this.state.posts} />
+                        <Profile user={this.state.session} todos={this.state.posts} />
                     </Route>
                     {routes}
+                    <Route path="*">
+                        <NoMatch />
+                    </Route>
                 </Switch>
                 <Login show={this.state.showLogin} changeShow={this.showModal} login={this.login} />
             </>
