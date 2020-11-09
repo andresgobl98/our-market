@@ -3,10 +3,7 @@ export {
     logOut,
     signUp,
     persistAuthentication,
-<<<<<<< HEAD
     reloadError
-=======
->>>>>>> origin/master
 } from './authentication';
 export {
     savePost,

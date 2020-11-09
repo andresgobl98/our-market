@@ -9,13 +9,11 @@ import Navbar from "react-bootstrap/Navbar";
 import { connect } from "react-redux";
 import { Link, Route, Switch } from "react-router-dom";
 import * as actionCreators from "../../store/actions/";
-import Business from "../Business/Business";
 import Home from "../Home/Home";
-import LogIn from "../LogIn/LogIn";
 import NoMatch from "../NoMatch/NoMatch";
 import Profile from "../Profile/Profile";
 import Business from "../Business/Business";
-import LogIn from "../Login/LogIn";
+import LogIn from "../LogIn/Login";
 import SignUp from "../SignUp/SignUp";
 import styles from "./Navigation.module.css";
 
@@ -49,9 +47,6 @@ class Navigation extends Component {
               </Nav.Link>
               <Nav.Link as={Link} to="/favoritos">
                 Favoritos
-              </Nav.Link>
-              <Nav.Link as={Link} to="/favoritos">
-                Mis Negocios favoritos
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>

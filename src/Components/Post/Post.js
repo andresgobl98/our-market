@@ -19,10 +19,6 @@ import {
     Link
 } from "react-router-dom";
 
-<<<<<<< HEAD
-export default function Post(props) {
-    console.log(props)
-=======
 const Post = (props) => {
 
     const addToFavs = () =>{
@@ -57,13 +53,10 @@ const Post = (props) => {
         }
     }
 
->>>>>>> origin/master
     return (
         
         <Col sm="6" md="4" lg="3">
             <Card>
-<<<<<<< HEAD
-=======
                 <Card.Img className="imagen" variant="top" src={require('../../Images/' + props.post.img)} />
                 <Card.Body>
                     <Card.Title>{props.post.name}</Card.Title>
@@ -75,7 +68,6 @@ const Post = (props) => {
                     <br></br>
                     {buttonType()}
                 </Card.Body>
->>>>>>> origin/master
             </Card>
         </Col>
     )

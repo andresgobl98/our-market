@@ -18,10 +18,6 @@ class Home extends Component {
         this.props.onFetchPosts();
     }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
     highArray = () => this.props.posts.filter(function (pst) {
         return pst.highlighted
     })
