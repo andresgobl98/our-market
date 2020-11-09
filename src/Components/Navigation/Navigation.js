@@ -1,23 +1,21 @@
-import React, { Component } from "react";
-import styles from "./Navigation.module.css";
-import { Nav } from "react-bootstrap";
 import axios from "axios";
+import React, { Component } from "react";
+import { Nav } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
 import Navbar from "react-bootstrap/Navbar";
+import { connect } from "react-redux";
+import { Link, Route, Switch } from "react-router-dom";
+import * as actionCreators from "../../store/actions/";
+import Business from "../Business/Business";
 import Home from "../Home/Home";
+import LogIn from "../LogIn/LogIn";
 import NoMatch from "../NoMatch/NoMatch";
 import Profile from "../Profile/Profile";
-import Business from "../Business/Business";
-import LogIn from "../LogIn/LogIn";
 import SignUp from "../SignUp/SignUp";
-import Form from "react-bootstrap/Form";
-import FormControl from "react-bootstrap/FormControl";
-import Button from "react-bootstrap/Button";
+import styles from "./Navigation.module.css";
 
-import { connect } from "react-redux";
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-import * as actionCreators from "../../store/actions/";
 
 class Navigation extends Component {
   state = {
@@ -32,28 +30,7 @@ class Navigation extends Component {
   }
 
 
-  componentDidMount() {
-      console.log(this.props);
-
-    axios.get("./posts.json").then((response) => {
-      const posts = response.data.slice(0, 10);
-
-      const updatedPosts = posts.map((post) => {
-        return {
-          id: post.id.toString(),
-          name: post.name,
-          highlighted: post.highlighted,
-          sDescr: post.sDescr,
-          lDescr: post.lDescr,
-          img: post.img,
-          rating: post.rating,
-        };
-      });
-
-      this.setState({ posts: updatedPosts });
-    });
-  }
-
+  
   logStatusNav = () => {
     if (this.props.isUserLoggedIn) {
       return (
@@ -116,7 +93,7 @@ class Navigation extends Component {
     const routes = this.state.posts.map((bsn) => {
       return (
         <Route path={"/" + bsn.name.replace(/ /g, "-")}>
-          <Business data={bsn} />
+         <Business data={bsn} />
         </Route>
       );
     });

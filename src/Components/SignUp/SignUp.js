@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import './SignUp.css';
 
 import * as actionCreators from "../../store/actions/";
 
@@ -10,6 +11,7 @@ class SignUp extends Component {
     isUserLoggedIn: this.props.isUserLoggedIn,
     userName: "",
     password: "",
+   
   };
 
   /*componentDidUpdate() {
@@ -53,7 +55,11 @@ class SignUp extends Component {
   };
 
   render() {
-    return (
+    if(this.props.error) {
+      var code = "Código de error :" + this.props.error.code;
+      var message = this.props.error.message;
+      var errorMessage = this.props.error.code !== undefined ? "" + code + " " + message:"Bienvenido a our market";
+    }return (
       <>
         <h3>Crear cuenta</h3>
         <Form>
@@ -82,6 +88,7 @@ class SignUp extends Component {
           <Button variant="primary" onClick={this.handleSubmit}>
             Ingresar
           </Button>
+          <h2  id="aviso"  className="error-msg">{errorMessage}</h2>
         </Form>
       </>
     );
@@ -90,14 +97,16 @@ class SignUp extends Component {
 
 const mapStateToProps = (state) => {
     return {
-      isUserLoggedIn: state.authenticationStore.isUserLoggedIn
+      isUserLoggedIn: state.authenticationStore.isUserLoggedIn,
+      error: state.authenticationStore.error
     };
   };
 
 const mapDispatchToProps = (dispatch) => {
     return {
       onUserSignUp: (authData, onSuccessCallback) =>
-      dispatch(actionCreators.signUp(authData, onSuccessCallback))
+      dispatch(actionCreators.signUp(authData, onSuccessCallback)),
+      onClean: ()=> dispatch(actionCreators.reloadError)
     };
   };
   

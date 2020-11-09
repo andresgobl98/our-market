@@ -26,6 +26,23 @@ const saveSignUp = (userName, token, localId) => {
   };
 };
 
+
+const runErrors = (error) => {
+  return {
+      type:actionTypes.RUN_ERRORS,
+      payload:{
+          error:error
+      }
+  }
+  }
+
+export const reloadError = () => {
+  return {
+      type: actionTypes.RELOAD_ERROR
+  }
+}
+
+
 export const logIn = (authData, onSuccessCallback) => {
   console.log('llego al action');
   return (dispatch) => {
@@ -55,6 +72,7 @@ export const logIn = (authData, onSuccessCallback) => {
       })
       .catch((error) => {
         console.log(error);
+        dispatch(runErrors(error));
       });
   };
 };
@@ -86,6 +104,7 @@ export const signUp = (authData, onSuccessCallback) => {
         }
       })
       .catch((error) => {
+        dispatch(runErrors(error));
         console.log(error);
       });
   };

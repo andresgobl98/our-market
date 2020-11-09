@@ -15,7 +15,7 @@ class App extends Component {
   render = () => {
     return (
       <Router history = {history}>
-        <Navigation />
+       <Navigation />
         <Footer />
       </Router>
     );

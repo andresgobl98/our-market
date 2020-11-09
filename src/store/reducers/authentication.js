@@ -44,11 +44,23 @@ const logOut = (state, action) => {
     });
 }
 
+const runError =(state,action)=>{
+    var e= action.payload.error;
+    return updateObject(state,{error: e.response.data.error});
+  }
+  
+  const reloadError =(state,action) => {
+    return updateObject(state, {error: {}});
+  }
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.LOGIN: return logIn(state, action);
         case actionTypes.SIGN_UP: return signUp(state, action);
         case actionTypes.LOG_OUT: return logOut(state, action);
+        case actionTypes.RUN_ERRORS: return runError(state,action);
+        case actionTypes.RELOAD_ERROR : return reloadError(state, action);
+       
         default: return state;
     }
 }

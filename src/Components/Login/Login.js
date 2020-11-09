@@ -2,14 +2,15 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-
-import * as actionCreators from "../../store/actions/";
+import './LogIn.css';
+import * as actionCreators from "../../store/actions";
 
 class LogIn extends Component {
   state = {
     isUserLoggedIn: this.props.isUserLoggedIn,
     userName: "",
     password: "",
+    error: this.props.error
   };
 
   /*componentDidUpdate() {
@@ -23,6 +24,10 @@ class LogIn extends Component {
       isUserLoggedIn: nextState.isUserLoggedIn,
     });
   }
+
+  componentDidMount(){
+    this.props.onClean();
+}
 
   handleChange = (event, type) => {
     var updatedLoginInfo = {
@@ -49,6 +54,13 @@ class LogIn extends Component {
   };
 
   render() {
+    console.log(this.props.error)
+    if(this.props.error) {
+      var code = "Código de error:" + this.props.error.code;
+      var message = this.props.error.message + ". Intentelo de nuevo";
+      var errorMessage = this.props.error.code !== undefined ? "Fallo " + code + ": " + message:"Bienvenido de nuevo";
+    }
+    
     return (
       <>
         <h3>Iniciar Sesión</h3>
@@ -82,6 +94,7 @@ class LogIn extends Component {
           <Button variant="primary" onClick={this.handleSubmit}>
             Ingresar
           </Button>
+          <h2 id="aviso" className="error-msg" >{errorMessage}</h2>              
         </Form>
       </>
     );
@@ -91,13 +104,15 @@ class LogIn extends Component {
 const mapStateToProps = (state) => {
   return {
     isUserLoggedIn: state.authenticationStore.isUserLoggedIn,
+    error: state.authenticationStore.error
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     onUserLogin: (authData, onSuccessCallback) =>
-      dispatch(actionCreators.logIn(authData, onSuccessCallback)),
+    dispatch(actionCreators.logIn(authData, onSuccessCallback)),
+    onClean: ()=> dispatch(actionCreators.reloadError())
   };
 };
 

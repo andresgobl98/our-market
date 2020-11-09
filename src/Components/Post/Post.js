@@ -14,33 +14,11 @@ import {
 } from "react-router-dom";
 
 export default function Post(props) {
+    console.log(props)
     return (
+        
         <Col sm="6" md="4" lg="3">
             <Card>
-                <Card.Img className="imagen" variant="top" src={require('../../Images/' + props.bImage)} />
-                <Card.Body>
-                    <Card.Title>{props.bName}</Card.Title>
-                    <Card.Text>
-                        {props.bDescr}
-                    </Card.Text>
-                    <span className="rating">Rating</span>
-                    <ProgressBar now={props.rating} label={`${props.rating}%`} />
-                    <br></br>
-                    <Dropdown as={ButtonGroup}>
-                        <Link to={props.bName.replace(/ /g,"-")}>
-                            <Button variant="success">Ver Negocio</Button>
-                        </Link>
-
-                        <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />
-
-                        <Dropdown.Menu>
-                            <Dropdown.Item href="#/action-1">Añadir a favoritos</Dropdown.Item>
-                            <Dropdown.Item href="#/action-2">Añadir a ver más tarde</Dropdown.Item>
-                            <Dropdown.Item href="#/action-3">Ocultar</Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
-                    
-                </Card.Body>
             </Card>
         </Col>
     )
