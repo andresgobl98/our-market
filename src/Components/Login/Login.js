@@ -58,7 +58,7 @@ class LogIn extends Component {
     if(this.props.error) {
       var code = "Código de error:" + this.props.error.code;
       var message = this.props.error.message + ". Intentelo de nuevo";
-      var errorMessage = this.props.error.code !== undefined ? "Fallo " + code + ": " + message:"Bienvenido de nuevo";
+      var errorMessage = this.props.error.code !== undefined ? "" + code + ": " + message:"Bienvenido de nuevo";
     }
     
     return (
