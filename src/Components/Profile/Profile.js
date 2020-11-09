@@ -6,6 +6,7 @@ import Image from 'react-bootstrap/Image'
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import Post from '../Post/Post'
 import './Profile.css';
+import Favourite from '../FavouritePost/FavouritePost';
 
 export default class Profile extends Component {
 
@@ -13,6 +14,11 @@ constructor(){
   super()
 }
   
+
+  renderFavPosts = () => {
+    let content = <Favourite favaourites = {this.state.post}/>;
+    return content;
+  }
 
   render() {
       console.log(this.props.todos)

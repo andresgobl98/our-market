@@ -4,3 +4,6 @@ export const LOG_OUT = 'LOG_OUT';
 
 export const SAVE_POST = 'SAVE_BSN';
 export const FETCH_POSTS = 'FETCH_BSNS';
+
+export const SAVE_FAV_POST = 'SAVE_FAV_POST';
+export const FETCH_FAV_POSTS = 'FETCH_FAV_POSTS';

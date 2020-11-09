@@ -10,10 +10,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import authenticationReducer from './store/reducers/authentication';
 import postReducer from './store/reducers/posts';
+import favsStore from './store/reducers/favs';
 
 const rootReducer = combineReducers ({
     authenticationStore: authenticationReducer,
-    postStore: postReducer
+    postStore: postReducer,
+    favsStore: favsStore
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

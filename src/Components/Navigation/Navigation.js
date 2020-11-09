@@ -11,6 +11,8 @@ import Login from '../Login/Login';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
+import FavouriteBusinesses from '../FavouriteBusinesses/FavouriteBusinesses';
+
 import {
     BrowserRouter as Router,
     Switch,
@@ -123,6 +125,9 @@ export default class Navigation extends Component {
                     </Route>
                     <Route path='/profile'>
                         <Profile user={this.state.session} todos={this.state.posts} />
+                    </Route>
+                    <Route path='/favoritos'>
+                        <FavouriteBusinesses/>
                     </Route>
                     {routes}
                     <Route path="*">
