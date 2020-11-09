@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 
 import * as actionCreators from "../../store/actions/";
 
-class LogIn extends Component {
+class SignUp extends Component {
   state = {
     isUserLoggedIn: this.props.isUserLoggedIn,
     userName: "",
@@ -13,10 +13,14 @@ class LogIn extends Component {
   };
 
   /*componentDidUpdate() {
-        if (this.state.isUserLoggedIn) {
-          this.props.history.push("/");
-        }
-      }*/
+    if (this.state.isUserLoggedIn) {
+      this.props.history.push("/");
+    }
+  }*/
+
+  componentDidMount () {
+    console.log(this.props)
+  }
 
   componentWillReceiveProps(nextState) {
     this.setState({
@@ -26,32 +30,32 @@ class LogIn extends Component {
 
   handleChange = (event, type) => {
     var updatedLoginInfo = {
-      ...this.state,
-    };
+        ...this.state
+      }
 
-    updatedLoginInfo[type] = event.target.value;
+      updatedLoginInfo[type] = event.target.value;
 
-    this.setState({
-      userName: updatedLoginInfo.userName,
-      password: updatedLoginInfo.password,
-    });
+      this.setState({
+        userName: updatedLoginInfo.userName,
+        password: updatedLoginInfo.password
+      });
   };
 
   handleSubmit = () => {
     const userData = {
-      email: this.state.userName,
-      password: this.state.password,
+        email: this.state.userName,
+        password: this.state.password
     };
 
-    this.props.onUserLogin(userData, () => {
-      this.props.history.push("/");
+    this.props.onUserSignUp(userData, () => {
+        this.props.history.push('/');
     });
   };
 
   render() {
     return (
       <>
-        <h3>Iniciar Sesión</h3>
+        <h3>Crear cuenta</h3>
         <Form>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>
@@ -59,9 +63,7 @@ class LogIn extends Component {
               type="email"
               value={this.state.email}
               placeholder="Ingrese su email"
-              onChange={(event) => {
-                this.handleChange(event, "userName");
-              }}
+              onChange={(event) => {this.handleChange(event, 'userName')}}
             />
             <Form.Text className="text-muted">
               No compartiremos tu e-mail con nadie.
@@ -74,9 +76,7 @@ class LogIn extends Component {
               type="password"
               value={this.state.password}
               placeholder="Contraseña"
-              onChange={(event) => {
-                this.handleChange(event, "password");
-              }}
+              onChange={(event) => {this.handleChange(event, 'password')}}
             />
           </Form.Group>
           <Button variant="primary" onClick={this.handleSubmit}>
@@ -89,16 +89,16 @@ class LogIn extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {
-    isUserLoggedIn: state.authenticationStore.isUserLoggedIn,
+    return {
+      isUserLoggedIn: state.authenticationStore.isUserLoggedIn
+    };
   };
-};
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    onUserLogin: (authData, onSuccessCallback) =>
-      dispatch(actionCreators.logIn(authData, onSuccessCallback)),
+    return {
+      onUserSignUp: (authData, onSuccessCallback) =>
+      dispatch(actionCreators.signUp(authData, onSuccessCallback))
+    };
   };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(LogIn);
+  
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
