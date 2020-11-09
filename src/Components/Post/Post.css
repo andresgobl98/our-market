@@ -1,5 +1,5 @@
-.imagen {
-    width: 100%;
+.imagenFav {
+    width: 10%;
     height: 11vw;
     object-fit: cover;
 }
@@ -8,6 +8,6 @@
     margin-bottom: 3em;
 }
 
-.rating {
+.ratingFav {
     font-weight: bold;
 }
