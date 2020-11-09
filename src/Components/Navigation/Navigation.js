@@ -47,6 +47,9 @@ class Navigation extends Component {
               <Nav.Link as={Link} to="/orders">
                 Mis Pedidos
               </Nav.Link>
+              <Nav.Link as={Link} to="/favoritos">
+                Mis Negocios favoritos
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
           <Button
