@@ -1,9 +1,11 @@
 .button {
     display: flex;
 }
-
-
 .loginButton {
     margin-right: 2em;
     margin-left: auto;
+}
+
+.brand {
+    margin-left: 10em;
 }

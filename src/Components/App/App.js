@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Footer from "../Footer/Footer";
 import Navigation from "../Navigation/Navigation";
-import history from '../../history';
+import history from "../../history";
 import { BrowserRouter as Router } from "react-router-dom";
 
 import { connect } from "react-redux";
@@ -15,7 +15,7 @@ class App extends Component {
 
   render = () => {
     return (
-      <Router history = {history}>
+      <Router history={history}>
         <Navigation />
         <Footer />
       </Router>
@@ -27,7 +27,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onPersistAuthentication: () =>
       dispatch(actionCreators.persistAuthentication()),
-      onFetchPosts: () =>dispatch(actionCreators.fetchPosts())
+    onFetchPosts: () => dispatch(actionCreators.fetchPosts()),
   };
 };
 

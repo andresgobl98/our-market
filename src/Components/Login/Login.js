@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import styles from "./LogIn.module.css";
 
 import * as actionCreators from "../../store/actions";
 
@@ -11,6 +12,10 @@ class LogIn extends Component {
     userName: "",
     password: "",
   };
+
+  componentDidMount() {
+    this.props.onClean();
+  }
 
   componentWillReceiveProps(nextState) {
     this.setState({
@@ -42,11 +47,31 @@ class LogIn extends Component {
     });
   };
 
+  displayError = (input) => {
+    var { code, message } = this.props.errorMessage;
+
+    if (this.props.errorMessage.code !== undefined) {
+      if (message === "INVALID_EMAIL" || message === "EMAIL_EXISTS") {
+        if (input === "email") {
+          return (
+            <span className={styles.error}>{`Error ${code}: ${message}`}</span>
+          );
+        }
+      } else {
+        if (input === "password") {
+          return (
+            <span className={styles.error}>{`Error ${code}: ${message}`}</span>
+          );
+        }
+      }
+    }
+  };
+
   render() {
     return (
       <>
-        <h3>Iniciar Sesión</h3>
         <Form>
+          <h3>Iniciar Sesión</h3>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>
             <Form.Control
@@ -60,6 +85,7 @@ class LogIn extends Component {
             <Form.Text className="text-muted">
               No compartiremos tu e-mail con nadie.
             </Form.Text>
+            {this.displayError("email")}
           </Form.Group>
 
           <Form.Group controlId="formBasicPassword">
@@ -72,6 +98,7 @@ class LogIn extends Component {
                 this.handleChange(event, "password");
               }}
             />
+            {this.displayError("password")}
           </Form.Group>
           <Button variant="primary" onClick={this.handleSubmit}>
             Ingresar
@@ -85,6 +112,7 @@ class LogIn extends Component {
 const mapStateToProps = (state) => {
   return {
     isUserLoggedIn: state.authenticationStore.isUserLoggedIn,
+    errorMessage: state.authenticationStore.errMessage,
   };
 };
 
@@ -92,6 +120,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onUserLogin: (authData, onSuccessCallback) =>
       dispatch(actionCreators.logIn(authData, onSuccessCallback)),
+    onClean: () => dispatch(actionCreators.cleanError()),
   };
 };
 

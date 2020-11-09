@@ -3,6 +3,7 @@ export {
     logOut,
     signUp,
     persistAuthentication,
+    cleanError
 } from './authentication';
 export {
     savePost,
