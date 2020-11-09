@@ -4,10 +4,15 @@
     object-fit: cover;
 }
 
+.colFav{
+    display:flex;
+}
+
+.favorito {
+    display:flex;
+}
 .card {
     margin-bottom: 3em;
-    display:block;
-
 }
 
 .rating {

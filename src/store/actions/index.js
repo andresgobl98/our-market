@@ -2,9 +2,10 @@ export {
     logIn,
     logOut,
     signUp,
-    persistAuthentication
+    persistAuthentication,
 } from './authentication';
 export {
     savePost,
-    fetchPosts
+    fetchPosts,
+    addFav
 } from './posts';

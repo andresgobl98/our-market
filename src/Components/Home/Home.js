@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 import * as actionCreators from '../../store/actions/';
 
-class Home extends Component(props) {
+class Home extends Component {
 
     componentWillReceiveProps (nextState) {
         this.setState({
@@ -18,17 +18,16 @@ class Home extends Component(props) {
         this.props.onFetchPosts();
     }
 
-
-    highArray = () => props.posts.filter(function (pst) {
+    highArray = () => this.props.posts.filter(function (pst) {
         return pst.highlighted
     })
-
+    
     render () {
         return (
             <div>
                 <Presentation />
                 <Highlights highlights={this.highArray()} />
-                <Dashboard posts={props.posts} />
+                <Dashboard posts={this.props.posts} />
             </div>
         );
     }
@@ -37,7 +36,7 @@ class Home extends Component(props) {
 const mapStateToProps = state => {
     return {
         isUserLoggedIn: state.authenticationStore.isUserLoggedIn,
-        posts: state.postsStore.posts,
+        posts: state.postStore.posts,
     }
 }
 

@@ -16,10 +16,12 @@ import {
 import { Container } from 'react-bootstrap';
 
 export default function Favourite(props) {
+    console.log("refrdggggggggggggggggggggg")
+    console.log(props)
     return (
         <Container>
-            <div className="shadow-lg p-3 mb-5 bg-white rounded">
-                <Col sm="6" md="4" lg="3">
+            <div className="shadow-lg p-3 mb-5 bg-white rounded favorito">
+                <Col className="colFav" sm="12" md="4">
                     <Card>
                         <Card.Img className="imagenFav" variant="top" src={require('../../Images/' + props.bImageFav)} />
                         <Card.Body>
@@ -30,26 +32,21 @@ export default function Favourite(props) {
                             <span className="ratingFav">Rating</span>
                             <ProgressBar now={props.ratingFav} label={`${props.ratingFav}%`} />
                             <br></br>
-                            <Dropdown as={ButtonGroup}>
-                                <Link to={props.bNameFav.replace(/ /g, "-")}>
-                                    <Button variant="success">Ver Negocio</Button>
-                                </Link>
-
-                                <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />
-                            </Dropdown>
 
                         </Card.Body>
                     </Card>
+                </Col>
+                <Col className="colFav" sm="12" md="7">
                     <Card>
                         <Card.Body>
                             <Card.Text>
-                                {props.bDescrFav}
+                                {props.bLongDescripFav}
                             </Card.Text>
 
                         </Card.Body>
                     </Card>
                 </Col>
-                    
+
             </div>
 
         </Container>
