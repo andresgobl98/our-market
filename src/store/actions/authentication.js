@@ -1,7 +1,7 @@
 import * as actionTypes from "./actionTypes";
 import axios from "../../instances/axios-authentication";
 
-const API_KEY = "AIzaSyB92XrBIpkN9fonQlPMSoOjf98rHSvVWyE"
+const API_KEY = "AIzaSyDYkIUTN0J0neg-zWIE1xCrlH34_Emt6VU"
 
 const saveSession = (userName, token, localId) => {
   return {
@@ -13,6 +13,7 @@ const saveSession = (userName, token, localId) => {
     },
   };
 };
+
 
 const saveSignUp = (userName, token, localId) => {
   return {
@@ -26,6 +27,7 @@ const saveSignUp = (userName, token, localId) => {
 };
 
 export const logIn = (authData, onSuccessCallback) => {
+  console.log('llego al action');
   return (dispatch) => {
     axios
       .post("/accounts:signInWithPassword?key=" + API_KEY, authData)
@@ -110,6 +112,7 @@ export const persistAuthentication = () => {
 };
 
 export const logOut = () => {
+  localStorage.setItem('userSession', '');
   return {
     type: actionTypes.LOG_OUT,
   };

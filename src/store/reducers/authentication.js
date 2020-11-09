@@ -10,7 +10,8 @@ const initialState = {
     },
 }
 
-const login = (state, action) => {
+const logIn = (state, action) => {
+    console.log('llego al reducer');
     return updateObject(state, {
         isUserLoggedIn: true,
         userLoggedIn: {
@@ -45,7 +46,7 @@ const logOut = (state, action) => {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case actionTypes.LOGIN: return login(state, action);
+        case actionTypes.LOGIN: return logIn(state, action);
         case actionTypes.SIGN_UP: return signUp(state, action);
         case actionTypes.LOG_OUT: return logOut(state, action);
         default: return state;

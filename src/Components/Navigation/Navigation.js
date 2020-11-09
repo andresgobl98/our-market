@@ -7,25 +7,34 @@ import Home from "../Home/Home";
 import NoMatch from "../NoMatch/NoMatch";
 import Profile from "../Profile/Profile";
 import Business from "../Business/Business";
-import Login from "../Login/Login";
-import Signin from "../Signin/Signin";
+import LogIn from "../LogIn/LogIn";
+import SignUp from "../SignUp/SignUp";
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
+
+import { connect } from "react-redux";
+
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-export default class Navigation extends Component {
-  constructor() {
-    super();
+import * as actionCreators from "../../store/actions/";
 
-    this.state = {
-      posts: [],
-      session: { favourites: [] },
-      isLogged: false
-    };
+class Navigation extends Component {
+  state = {
+    posts: [],
+    isLogged: this.props.isUserLoggedIn,
+  };
+
+  componentWillReceiveProps(nextState) {
+    this.setState({
+      isUserLoggedIn: nextState.isUserLoggedIn,
+    });
   }
 
+
   componentDidMount() {
+      console.log(this.props);
+
     axios.get("./posts.json").then((response) => {
       const posts = response.data.slice(0, 10);
 
@@ -45,21 +54,8 @@ export default class Navigation extends Component {
     });
   }
 
-
-  login = (email, password) => {
-    axios.get("./user.json").then((response) => {
-      const session = response.data;
-      console.log(session);
-      if (email === session.email && password === session.password) {
-        this.setState({ session: session, isLogged: true });
-      } else {
-        alert("El correo o la contraseña no coinciden.");
-      }
-    });
-  };
-
   logStatusNav = () => {
-    if (this.state.isLogged) {
+    if (this.props.isUserLoggedIn) {
       return (
         <Navbar bg="dark" variant="dark" expand="md">
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -79,7 +75,7 @@ export default class Navigation extends Component {
           <Button
             className={`${styles.loginButton} mr-20`}
             variant="outline-danger"
-            onClick={this.showModal}
+            onClick={this.props.onLogOut}
           >
             Cerrar Sesión
           </Button>
@@ -103,8 +99,8 @@ export default class Navigation extends Component {
           </Button>
           <Button
             as={Link}
-            to="/signIn"
-            className={`${styles.button} ${styles.signinButton} mr-20`}
+            to="/signUp"
+            className={`${styles.button} ${styles.signupButton} mr-20`}
             variant="outline-success"
             onClick={this.showModal}
           >
@@ -116,6 +112,7 @@ export default class Navigation extends Component {
   };
 
   render() {
+    console.log(this.state.isLogged);
     const routes = this.state.posts.map((bsn) => {
       return (
         <Route path={"/" + bsn.name.replace(/ /g, "-")}>
@@ -134,10 +131,8 @@ export default class Navigation extends Component {
           <Route path="/profile">
             <Profile user={this.state.session} todos={this.state.posts} />
           </Route>
-          <Route path="/logIn" component = {Login} />
-          <Route path="/signIn">
-              <Signin login = {this.login} />
-          </Route>
+          <Route path="/logIn" component={LogIn} />
+          <Route path="/signUp" component={SignUp} />
           {routes}
           <Route path="*">
             <NoMatch />
@@ -147,3 +142,19 @@ export default class Navigation extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    isUserLoggedIn: state.authenticationStore.isUserLoggedIn,
+    userLoggedIn: state.authenticationStore.userLoggedIn,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onLogOut: () => dispatch(actionCreators.logOut()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
