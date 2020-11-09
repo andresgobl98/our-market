@@ -1,0 +1,22 @@
+{
+    "favoritos": {
+        "1": {
+            "id": 1,
+            "name": "Empresa 1",
+            "highlighted": true,
+            "sDescr": "Short Description",
+            "lDescr": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dictum erat quis lorem posuere pretium. Donec ac malesuada libero. Phasellus ut ligula vel metus luctus sollicitudin sagittis quis neque. Praesent placerat magna ipsum, ut tempus est commodo ut. Mauris fringilla consectetur dapibus. Nam ultrices urna vitae elit imperdiet, vitae finibus ex iaculis. Vestibulum iaculis, erat in accumsan venenatis, felis sapien molestie tellus, aliquam ornare mauris metus non erat. Vivamus ac nisl turpis. Proin eget maximus mi, ac auctor elit. Phasellus tincidunt eros sed mauris malesuada, et varius metus ultrices. Sed bibendum, eros sit amet mollis ultricies, erat lectus posuere augue, eget ultrices nulla ligula ac ipsum. Suspendisse facilisis velit viverra, eleifend augue ac, consectetur elit. Proin dignissim odio eget ultrices mattis. Cras vitae nibh massa. Quisque condimentum felis ac auctor malesuada. Mauris ut risus sed felis ultrices sollicitudin.",
+            "img": "computador.jpg",
+            "rating": 45
+        },
+        "2": {
+            "id": 3,
+            "name": "Empresa 3",
+            "highlighted": true,
+            "sDescr": "Short Description",
+            "lDescr": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dictum erat quis lorem posuere pretium. Donec ac malesuada libero. Phasellus ut ligula vel metus luctus sollicitudin sagittis quis neque. Praesent placerat magna ipsum, ut tempus est commodo ut. Mauris fringilla consectetur dapibus. Nam ultrices urna vitae elit imperdiet, vitae finibus ex iaculis. Vestibulum iaculis, erat in accumsan venenatis, felis sapien molestie tellus, aliquam ornare mauris metus non erat. Vivamus ac nisl turpis. Proin eget maximus mi, ac auctor elit. Phasellus tincidunt eros sed mauris malesuada, et varius metus ultrices. Sed bibendum, eros sit amet mollis ultricies, erat lectus posuere augue, eget ultrices nulla ligula ac ipsum. Suspendisse facilisis velit viverra, eleifend augue ac, consectetur elit. Proin dignissim odio eget ultrices mattis. Cras vitae nibh massa. Quisque condimentum felis ac auctor malesuada. Mauris ut risus sed felis ultrices sollicitudin.",
+            "img": "old-lady.jpg",
+            "rating": 58
+        }
+    }
+}

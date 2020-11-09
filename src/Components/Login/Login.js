@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-import * as actionCreators from "../../store/actions/";
+import * as actionCreators from "../../store/actions";
 
 class LogIn extends Component {
   state = {
@@ -11,12 +11,6 @@ class LogIn extends Component {
     userName: "",
     password: "",
   };
-
-  /*componentDidUpdate() {
-        if (this.state.isUserLoggedIn) {
-          this.props.history.push("/");
-        }
-      }*/
 
   componentWillReceiveProps(nextState) {
     this.setState({

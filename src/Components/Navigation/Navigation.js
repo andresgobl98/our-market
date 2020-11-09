@@ -1,3 +1,7 @@
+
+import FavouriteBusinesses from '../FavouriteBusinesses/FavouriteBusinesses';
+
+
 import React, { Component } from "react";
 import styles from "./Navigation.module.css";
 import { Nav } from "react-bootstrap";
@@ -7,7 +11,7 @@ import Home from "../Home/Home";
 import NoMatch from "../NoMatch/NoMatch";
 import Profile from "../Profile/Profile";
 import Business from "../Business/Business";
-import LogIn from "../LogIn/LogIn";
+import LogIn from "../Login/LogIn";
 import SignUp from "../SignUp/SignUp";
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
@@ -31,29 +35,6 @@ class Navigation extends Component {
     });
   }
 
-
-  componentDidMount() {
-      console.log(this.props);
-
-    axios.get("./posts.json").then((response) => {
-      const posts = response.data.slice(0, 10);
-
-      const updatedPosts = posts.map((post) => {
-        return {
-          id: post.id.toString(),
-          name: post.name,
-          highlighted: post.highlighted,
-          sDescr: post.sDescr,
-          lDescr: post.lDescr,
-          img: post.img,
-          rating: post.rating,
-        };
-      });
-
-      this.setState({ posts: updatedPosts });
-    });
-  }
-
   logStatusNav = () => {
     if (this.props.isUserLoggedIn) {
       return (
@@ -67,8 +48,8 @@ class Navigation extends Component {
               <Nav.Link as={Link} to="/profile">
                 Mi Perfil
               </Nav.Link>
-              <Nav.Link as={Link} to="/orders">
-                Mis Pedidos
+              <Nav.Link as={Link} to="/favoritos">
+                Favoritos
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
@@ -112,32 +93,30 @@ class Navigation extends Component {
   };
 
   render() {
-    console.log(this.state.isLogged);
-    const routes = this.state.posts.map((bsn) => {
-      return (
-        <Route path={"/" + bsn.name.replace(/ /g, "-")}>
-          <Business data={bsn} />
-        </Route>
-      );
-    });
+
 
     return (
       <>
         {this.logStatusNav()}
-        <Switch>
-          <Route exact path="/">
-            <Home posts={this.state.posts} />
-          </Route>
-          <Route path="/profile">
-            <Profile user={this.state.session} todos={this.state.posts} />
-          </Route>
-          <Route path="/logIn" component={LogIn} />
-          <Route path="/signUp" component={SignUp} />
-          {routes}
-          <Route path="*">
-            <NoMatch />
-          </Route>
-        </Switch>
+          <Switch>
+            <Route exact path="/">
+              <Home posts={this.state.posts} />
+            </Route>
+            <Route path="/profile">
+              <Profile user={this.state.session} todos={this.state.posts} />
+            </Route>
+            <Route path="/logIn" component={LogIn} />
+            <Route path='/favoritos'>
+              <FavouriteBusinesses />
+            </Route>
+            <Route path="/signUp" component={SignUp} />
+            <Route path="/empresas/:id" render={(props)=><Business {...props} />}>
+
+            </Route>
+            <Route path="*">
+              <NoMatch />
+            </Route>
+          </Switch>
       </>
     );
   }
@@ -147,7 +126,7 @@ const mapStateToProps = (state) => {
   console.log(state);
   return {
     isUserLoggedIn: state.authenticationStore.isUserLoggedIn,
-    userLoggedIn: state.authenticationStore.userLoggedIn,
+    userLoggedIn: state.authenticationStore.userLoggedIn
   };
 };
 

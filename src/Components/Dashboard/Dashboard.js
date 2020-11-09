@@ -8,9 +8,11 @@ import Button from 'react-bootstrap/Button';
 export default class Dashboard extends Component {
 
     render() {
-        const posts = this.props.posts.map(post => {
-            return <Post key={post.id} bName={post.name} bDescr={post.sDescr} bImage={post.img} rating={post.rating} />
-        })
+        const posts =
+            this.props.posts.map((post,index) => {
+                if (post.id)
+                    return <Post index={index} post = {post} />
+            })
 
         return (
             <div>

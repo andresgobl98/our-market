@@ -18,17 +18,16 @@ class Home extends Component {
         this.props.onFetchPosts();
     }
 
-
     highArray = () => this.props.posts.filter(function (pst) {
         return pst.highlighted
     })
-
+    
     render () {
         return (
             <div>
                 <Presentation />
                 <Highlights highlights={this.highArray()} />
-                <Dashboard posts={props.posts} />
+                <Dashboard posts={this.props.posts} />
             </div>
         );
     }
