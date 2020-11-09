@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-export default class Login extends Component {
+export default class Signin extends Component {
   constructor() {
     super();
 
@@ -22,6 +22,7 @@ export default class Login extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    
     this.props.history.push('/');
   };
 
@@ -32,7 +33,7 @@ export default class Login extends Component {
   render() {
     return (
       <>
-      <h3>Iniciar Sesión</h3>
+      <h3>Crear cuenta</h3>
       <Form>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email</Form.Label>

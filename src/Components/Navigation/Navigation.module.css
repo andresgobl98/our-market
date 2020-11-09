@@ -1,8 +1,9 @@
-.loginButton {
+.button {
     display: flex;
 }
 
-.form {
+
+.loginButton {
     margin-right: 2em;
     margin-left: auto;
 }

@@ -15,8 +15,8 @@ import {
 
 export default function Footer() {
     return (
-        <>
-            <Navbar bg="dark" variant="dark" expand="md" sticky="bottom">
+        <div className = "footer">
+            <Navbar bg="dark" variant="dark" expand="md">
                 <Container className="justify-content-center">
                     <Row>
                         <Col sm="12">
@@ -32,7 +32,7 @@ export default function Footer() {
                     </Row>
                 </Container>
             </Navbar>
-        </>
+        </div>
     )
 }
 
