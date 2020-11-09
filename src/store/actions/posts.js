@@ -35,6 +35,15 @@ const loadPosts = posts => {
     };
 }
 
+const saveNewPost = newPost => {
+    return {
+        type: actionTypes.ADD_FAV,
+        payload: {
+            newPost: newPost 
+        }
+    }
+}
+
 export const fetchPosts = () => {
     return dispatch => {
         axios.get('/posts.json')
@@ -42,10 +51,29 @@ export const fetchPosts = () => {
                 console.log(response);
 
                 const posts = Object.values(response.data).map((post) => {
-                    return {...post};
+                    return { ...post };
                 });
 
                 dispatch(loadPosts(posts));
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+}
+
+export const addFav = (newPost, onSuccessCallback) => {
+    return dispatch => {
+        axios.patch('/posts/' + newPost.id + '.json', newPost)
+            .then(response => {
+                console.log(response);
+
+                dispatch(saveNewPost(newPost));
+
+                if (onSuccessCallback) {
+                    onSuccessCallback();
+                }
+
             })
             .catch(error => {
                 console.log(error);

@@ -3,9 +3,13 @@ export {
     logOut,
     signUp,
     persistAuthentication,
+<<<<<<< HEAD
     reloadError
+=======
+>>>>>>> origin/master
 } from './authentication';
 export {
     savePost,
-    fetchPosts
+    fetchPosts,
+    addFav
 } from './posts';

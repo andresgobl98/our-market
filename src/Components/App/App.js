@@ -9,6 +9,7 @@ import * as actionCreators from "../../store/actions/";
 
 class App extends Component {
   componentDidMount = () => {
+    this.props.onFetchPosts();
     this.props.onPersistAuthentication();
   };
 
@@ -26,6 +27,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onPersistAuthentication: () =>
       dispatch(actionCreators.persistAuthentication()),
+      onFetchPosts: () =>dispatch(actionCreators.fetchPosts())
   };
 };
 

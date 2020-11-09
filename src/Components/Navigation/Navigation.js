@@ -1,4 +1,7 @@
-import axios from "axios";
+
+import FavouriteBusinesses from '../FavouriteBusinesses/FavouriteBusinesses';
+
+
 import React, { Component } from "react";
 import { Nav } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
@@ -11,6 +14,8 @@ import Home from "../Home/Home";
 import LogIn from "../LogIn/LogIn";
 import NoMatch from "../NoMatch/NoMatch";
 import Profile from "../Profile/Profile";
+import Business from "../Business/Business";
+import LogIn from "../Login/LogIn";
 import SignUp from "../SignUp/SignUp";
 import styles from "./Navigation.module.css";
 
@@ -29,8 +34,6 @@ class Navigation extends Component {
     });
   }
 
-
-  
   logStatusNav = () => {
     if (this.props.isUserLoggedIn) {
       return (
@@ -44,8 +47,8 @@ class Navigation extends Component {
               <Nav.Link as={Link} to="/profile">
                 Mi Perfil
               </Nav.Link>
-              <Nav.Link as={Link} to="/orders">
-                Mis Pedidos
+              <Nav.Link as={Link} to="/favoritos">
+                Favoritos
               </Nav.Link>
               <Nav.Link as={Link} to="/favoritos">
                 Mis Negocios favoritos
@@ -92,32 +95,29 @@ class Navigation extends Component {
   };
 
   render() {
-    console.log(this.state.isLogged);
-    const routes = this.state.posts.map((bsn) => {
-      return (
-        <Route path={"/" + bsn.name.replace(/ /g, "-")}>
-         <Business data={bsn} />
-        </Route>
-      );
-    });
 
     return (
       <>
         {this.logStatusNav()}
-        <Switch>
-          <Route exact path="/">
-            <Home posts={this.state.posts} />
-          </Route>
-          <Route path="/profile">
-            <Profile user={this.state.session} todos={this.state.posts} />
-          </Route>
-          <Route path="/logIn" component={LogIn} />
-          <Route path="/signUp" component={SignUp} />
-          {routes}
-          <Route path="*">
-            <NoMatch />
-          </Route>
-        </Switch>
+          <Switch>
+            <Route exact path="/">
+              <Home posts={this.state.posts} />
+            </Route>
+            <Route path="/profile">
+              <Profile user={this.state.session} todos={this.state.posts} />
+            </Route>
+            <Route path="/logIn" component={LogIn} />
+            <Route path='/favoritos'>
+              <FavouriteBusinesses />
+            </Route>
+            <Route path="/signUp" component={SignUp} />
+            <Route path="/empresas/:id" render={(props)=><Business {...props} />}>
+
+            </Route>
+            <Route path="*">
+              <NoMatch />
+            </Route>
+          </Switch>
       </>
     );
   }
@@ -127,7 +127,7 @@ const mapStateToProps = (state) => {
   console.log(state);
   return {
     isUserLoggedIn: state.authenticationStore.isUserLoggedIn,
-    userLoggedIn: state.authenticationStore.userLoggedIn,
+    userLoggedIn: state.authenticationStore.userLoggedIn
   };
 };
 
